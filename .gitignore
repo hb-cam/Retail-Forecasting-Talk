@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+wheels/
+
+# Environment
+.env
+.venv/
+
+# Node
+node_modules/
+
+# Marp build artifacts (pre-built HTML is tracked for easy viewing)
+decks/*.html
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/output/
+
+# Claude Code
+.claude/

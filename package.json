@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "deck:serve": "npm run deck:build:html && python3 -m http.server 3000 -d decks/build/",
+    "deck:watch": "marp decks/retail-forecast.md -w --html -o decks/build/retail-forecast.html",
+    "deck:prebuild": "rm -rf decks/build/images decks/build/js && cp -r decks/images decks/build/images && cp -r decks/js decks/build/js",
+    "deck:build:html": "marp decks/retail-forecast.md --html -o decks/build/retail-forecast.html && npm run deck:prebuild",
+    "deck:build:pdf": "marp decks/retail-forecast.md --html --pdf -o decks/build/retail-forecast.pdf"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.2.3"
+  }
+}
