@@ -194,17 +194,17 @@ section.divider h2 {
 - Started my career in technology-enabled manufacturing
 
 ---
-## Motivation for today's talk – key question
+## Framework for today's talk - forecasting
 Organizations of any size need:
 - To forecast revenue
-- Using a precise approach — preferably <1% 1-step annual forecast error
+- Using a precise approach
 - Easily with little complexity
 - Providing clear insight — "What changed and Why"
-- To establish and maintain credibility with stakeholders
+- Establishing and maintaining credibility with stakeholders
 
 ---
 ## Agenda
-1. **The Problem** — statistical issues in operational data
+1. **The Challenge** — statistical issues in operational data
 2. **The Structural Solution** — modeling with macroeconomic indices
 3. **Building It Right** — functional form, indexation, and regression rigor
 4. **Modeling Dynamics** — stationarity, co-integration, and AR models
@@ -213,7 +213,7 @@ Organizations of any size need:
 
 ---
 <!-- _class: divider -->
-## The Problem
+## The Challenge
 
 ---
 ## Statistical Issues
@@ -221,17 +221,17 @@ Organizations of any size need:
 #### Sampling Bias
 - Empirical studies suffer from bias in observational and operational data
 - Affects inference, parameter bias, and generalizability
-- Mitigation strategies — setting strata e.g., firmographics, leveraged-outliers
+<!-- - Mitigation strategies — setting strata e.g., firmographics, leveraged-outliers -->
 
 #### Simultaneity Bias
 - Joint determination of explanatory and dependent variables
 - Examples from economics — demand pull inflation
-- Identification strategies: instrumental variables, structural modeling
+<!-- - Identification strategies: instrumental variables, structural modeling -->
 
 ---
 ## So what do we do about it?
 ### We need structure
-- Naive models inherit all these biases — they lack economic grounding
+- Naive models inherit these biases — they lack economic grounding
 - A **structural approach** decomposes revenue into interpretable, testable components
 - Map macro forces → industry dynamics → operational drivers → financial outcomes
 - Each layer is independently observable, forecastable, auditable, and composable
@@ -243,13 +243,13 @@ Organizations of any size need:
 ---
 ## Dynamic Systems
 ### A Structural Simplified Linear Approach
-- Overcoming differing cyclicality — separating into pro, counter, and a-cyclical components
-- When linear approximations break down — pricing, volume, **mix** (PVM)
+- Overcoming differing cyclicality — separate the pro, counter, and a-cyclical components
+- Functional form — linearizing PVM: pricing, volume, **mix**
 - Implications and opportunities — stability and long-run forecasts
-  - Things to monitor — penetration, share change, pricing mix, etc.
+  - Things to monitor — market penetration, share, pricing mix, etc.
 ---
 ## System Dynamics
-### Transformations
+### Modeling Change — generating insight, preventing drift 
 - Natural log — log-log, log-level
 - Indicator functions — technology transformations, share changes, pricing mix
   - Intercept/s
@@ -257,23 +257,25 @@ Organizations of any size need:
   - Trend
 
 ---
-## Indexation — pricing and volume shifts
-### Business Weighted Indices 
+## Indexation — Pricing and Volume Shifts
+### Connect public macro data to *your* revenue 
 - $Index_t = \sum_{i=1}^n w_i*Industry_i$
-- Weighing factors $w_i$: regional, industry, product mix
-- $Index$ construction methodologies: firmographics, product categories
+- Weighting factors $w_i$: regional, industry, product mix
+  - Choice of metric matters — revenue-weighted vs. volume-weighted vs. transaction-weighted
+- $Index$ segmentation: firmographics, product categories
+- Weights are calibrations — when mix shifts, re-weight or the forecast silently degrades
 
 ---
 ## Model
 
 ### Functional Form
-- If we start with: $Revenue_t = \gamma*p_t^{\beta_1}*v_t^{\beta_2}$
-- $ln(Revenue_t) = \alpha + \beta_1 * ln(p_t) + \beta_2 * ln(v_t)$, $\alpha = ln(\gamma)$
-  - log normal standard errors
-  - reduce the impact of collinearity
-  - diminishing returns to scale
-- Trend: Time varying intercept and elasticities can and should be tested
-- Seasonality: retail is highly 'seasonal' at both periodic and non-periodic time intervals
+  - Revenue is multiplicative: $Revenue_t = \gamma*p_t^{\beta_1}*v_t^{\beta_2}$
+  - Logs make it linear: $ln(Revenue_t) = \alpha + \beta_1 * ln(p_t) + \beta_2 * ln(v_t)$
+    - Every coefficient directly actionable — scenarios, monitoring, communication
+    - Full OLS diagnostic toolkit
+    - Returns to scale estimated, not assumed — the data tells you the regime
+  - **Trend:** time-varying intercept and elasticities — test with indicators
+  - **Seasonality:** periodic (calendar) and non-periodic (Easter, promotions) — both modeled explicitly
 
 ---
 ## Model
@@ -326,7 +328,7 @@ flowchart LR
 ## Industry Index
 ### Pricing Mix
 - $Industry_{mix_t} = \sum_{i=1}^n w_i*Industry_i$
-- Weighing factors:
+- Weighting factors:
 <div class="mermaid">
 sankey-beta
   FSR,Revenue,40
@@ -343,38 +345,41 @@ sankey-beta
 
 ---
 ## Regression Modeling — key concepts
-### Identification — can feel like an art form
-- Regression through the origin — affine is fine
-- Model specification — generally functional form
-- Omitted Variable Bias — e.g., omitted seasonal effects or dropping a collinear predictor that carries unique signal
-- Collinearity ViF — interpretation of individual significance: @1, 5, 10%
-- Heteroscedasticity of error terms — e.g., wages vs. education
-- Autocorrelation — often due to OVB
-#### Go/No-Go tests
-- F-Test — testing the joint distribution; joint significance can hold even when individual t-tests fail under collinearity
-- Out-of-sample validation and backtesting
+### Identification — can feel like an art form, how to know it's right
+- **Specification** — functional form drives everything downstream
+- **Omitted Variable Bias** — dropping a variable biases what remains
+  (e.g., dropping a collinear predictor that carries unique signal)
+- **Collinearity (VIF)** — individual t-tests become unreliable;
+  doesn't mean the model is wrong — check joint significance
+- **Heteroscedasticity** — tells you about the DGP, not just the errors
+- **Autocorrelation** — often the first signal of a missing variable
+
+#### Go/No-Go
+- **F-Test** — joint significance holds even when individual t-tests fail
+- **Out-of-sample validation** — the only test that matters for forecasting
 
 ---
 ## Regression Modeling — key concepts
-### Interpretation, assumptions, and testing (1):
-- Ceteris paribus — all else equal; interpret each coefficient holding others constant
-- Relative accuracy metrics:
-  - **MAPE** — scale-independent, intuitive for stakeholders ("X%")
-  - **MAE** — robust to outliers, units of the dependent variable
-  - **RMSE** — penalizes large errors, useful for risk-sensitive forecasts
-- In-sample fit vs. out-of-sample accuracy — the latter is what matters
+### Interpretation and Validation
+- **Ceteris paribus** — isolate the effect of one driver, holding others constant
+  - The structural decomposition makes this operational, not just theoretical
+- **Accuracy metrics** — match the metric to the audience:
+  - **MAPE** for stakeholders — "the forecast was off by 0.8%"
+  - **MAE** for robustness — resistant to outlier distortion
+  - **RMSE** for risk — penalizes for the misses that hurt most
+- **Out-of-sample accuracy is the credibility test** — in-sample fit is necessary, not sufficient
 
 ---
-## Regression Modeling — key concepts
-### Interpretation, assumptions, and testing (2):
-- Leveraged outliers — not just outliers
-  - $\hat{\beta_i} = \frac{\sum{(y_i - \bar{y})(x_i - \bar{x})}}{\sum{(x_i - \bar{x})^2}}$; both $y_i<<>>\bar{y}$ and $x_i<<>>\bar{x}$
-- Leave one out cross-validation
-  - $\hat{\beta} - \hat{\beta_i} = \frac{(X'X)^{-1}x_i * e_i}{1-h_{ii}}$ compare the full sample $\beta$ to the leave one out $\beta_i$
-  - $\hat{h_{ii}} = x'(X'X)^{-1}x_i$ - how voting power does each observation have
-    - $h_{ii}$ close to 0 → the line barely notices it
-    - $h_{ii}$ close to 1 → the regression line must pass near it because there's nothing else counterbalancing it
-    - Rule of thumb: $h_ii > 2p/n$ (twice the average) means "this point has outsized pull"
+## Regression Modeling — Key Concepts
+### Leveraged Outliers — What's driving your model?
+- Leverage: $h_{ii} = x_i'(X'X)^{-1}x_i$ — voting power of each observation
+  - $h_{ii}$ near 0 → negligible influence; near 1 → model anchored to this point
+  - Flag: $h_{ii} > 2p/n$
+- Influence: $\hat{\beta} - \hat{\beta}_{(i)} = \frac{(X'X)^{-1}x_i \cdot e_i}{1 - h_{ii}}$
+  - Large shift → this observation is driving your estimates
+- **Action:** structural break → indicator (slide 10); data issue → investigate
+
+- $\hat{\beta}_{OLS} = \frac{\sum{(y_i - \bar{y})(x_i - \bar{x})}}{\sum{(x_i - \bar{x})^2}}$; both $y_i<<>>\bar{y}$ and $x_i<<>>\bar{x}$
 
 ---
 ## Regression Modeling — key concepts
@@ -390,24 +395,25 @@ sankey-beta
 
 ---
 ## Advanced Time Series Modeling
-### I(0) vs. I(1)
-- Stationary vs. integrated processes
-- Testing and diagnostics
-- Modeling implications for levels vs. differences
+### Stationarity — The precondition
+- **I(0) vs. I(1)** — does the series revert to a mean, or drift without bound?
+  - Get this wrong → spurious regression: high $R^2$, meaningless coefficients
+  - Test before modeling — ADF, KPSS
+- **Modeling choice:** levels (if stationary or co-integrated) vs. differences
 
-### Co-integration Concepts
-- Economic and operational interpretations
-- Long-run equilibrium relationships
-- Error-correction mechanisms
-
+### Co-integration — Validating the structural link
+- Integrated processes don't need differencing if the model captures a real equilibrium
+  - Co-integration means the linear combination is stationary (residual)
+- **Error correction** — deviations from equilibrium self-correct; the forecast adapts
 
 ---
 ## Advanced Time Series Modeling
 ### AR(p) Models
-- Standard errors: OLS and HAC vs. AR(p) — HAC corrects inference (SEs, p-values) without changing $\hat{\beta}$
-- Higher-order autoregressive dynamics in model error — presence often signifies OVB
-- Lag selection — use the principle of parsimony
-- Hold out validation — most recent full year
+- **HAC standard errors** — corrects inference for heteroscedasticity and autocorrelation in one step; $\hat{\beta}$ doesn't change
+- **Autocorrelation in residuals is a symptom** — often signals a missing variable (OVB)
+  - Fix the specification first; add AR terms only as a last resort
+- **Parsimony** — minimum lag order
+- **Holdout** — most recent full year; match the business question
 
 
 ---
@@ -417,9 +423,12 @@ sankey-beta
 ---
 ## Forecasting
 ### Forecast Uncertainty
-- Model error + input (exogenous) forecast error = forecast error
-- Error propagation through dynamic systems — ACF/PACF and IRF
-- Scenario-based sensitivity analysis
+- **Minimize model error** — diagnostic rigor delivers <1% cumulative MAPE on 12-month holdout
+- **Forecast error = model error + input forecast error**
+  — negligible model error materially improves structural decomposition
+- **β × ΔX decomposition** — attribute the forecast to each component: what moved, by how much, and why
+- **Macro shocks → revenue impact** — calibrate a GDP or index miss directly to your bottom line
+- **Scenarios** — "what if" analysis is where strategy meets forecasting
 
 ---
 ## Forecasting
@@ -435,31 +444,32 @@ sankey-beta
 
 ---
 ## Monitoring and Evaluation
-### Evaluation
-- Model monitoring and performance tracking — within year vs. full year trend in forecast error
-- Early warning signals and anomaly detection
-- Adaptive forecasting strategies
-- Model re-estimation and updating
+### Evaluation — What the framework enables
+- **Performance tracking** — within-year vs. full-year error; error correction; trending to plan                                                                              
+- **Early warning** — residual structure and parameter stability signal problems before the forecast misses 
+- **Overlay adjustments** — model as the baseline; layer known impacts on top
+- **Model updating** — that drift has meaning, meaning has value, update when diagnostics dictate
 
 ---
 ## Monitoring and Evaluation
 ### Monitoring
-Inventory of items I like to store and track:
+What to version and track:
 Given a functional form: $y_t = \beta*X_t + \epsilon_t$
 Where $\beta = (X'X)^{-1}*X'y$
 - $y_t$, $\hat{y_t}$, $\epsilon_t$, $X_t$, $MAE$, $MAPE$ — as a versioned table
 - $\matrix{\beta}$ coefficient vector 
 - $\Delta X_t = X_t - X_{t-1}$ — generally correct, and any other transformations
 - $\beta *\Delta X_t$
+ - Holdout $MAPE$ by estimation vintage — is the model improving or degrading over time?
 
 ---
 ## Monitoring and Evaluation
-### Monitoring — other key assumptions that can cause drift:
-- Share changes
-- Pricing mix
-- Product mix
-- Industry composition
-- Regional mix
+### Assumptions That Cause Drift
+- Share changes — if your revenue mix shifts, the index weights go stale
+- Pricing mix — changes in what's sold at what price point
+- Product mix — new products, retired products, category shifts
+- Industry composition — your segments grow at different rates
+- Regional mix — geographic exposure changes
 
 ---
 ## Key Takeaways
