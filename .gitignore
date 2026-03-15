@@ -29,3 +29,7 @@ notebooks/output/
 
 # Claude Code
 .claude/
+
+# Regression module — only v2 is public
+src/regression_dclass/regression_dclass_v0.py
+src/regression_dclass/regression_dclass_v1.py
