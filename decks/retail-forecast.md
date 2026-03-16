@@ -408,7 +408,7 @@ sankey-beta
 
 ---
 ## Advanced Time Series Modeling
-### ARIMA errors
+### ARIMA Errors
 - **HAC standard errors** — corrects inference for heteroscedasticity and autocorrelation in one step; $\hat{\beta}$ doesn't change
 - **Autocorrelation in residuals is a symptom** — often signals a missing variable (OVB)
   - Fix the specification first; add AR terms only as a last resort
@@ -430,7 +430,7 @@ sankey-beta
 
 ---
 ## Forecasting
-### Key Forecast Comparison Techniques
+### Key forecast comparison techniques
 - Key Risks and Scenario planning — how you talk to the street
 - Current vs. prior — year, forecast, scenario
 - Decision-oriented evaluation — financial mitigation analysis
