@@ -1,3 +1,4 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb)
 # Payments Forecasting with Retail Data
 
 **AMLC Community Talk — March 2026**
