@@ -161,3 +161,16 @@ uv run pytest -k "not Live"
 ---
 
 **License** This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📬 Contact & Connect
+
+If you're interested in structural econometrics, property technology, or modern data engineering workflows, I'd love to connect.
+
+* **LinkedIn:** [hicksbruce](https://www.linkedin.com/in/hicksbruce)
+* **GitHub:** [@hb-cam](https://github.com/hb-cam)
+* **Event:** [Applied Machine Learning Collective (AMLC) Denver](https://www.meetup.com/applied-machine-learning-collective/)
+
+---
+
+> [!TIP]
+> **Questions about the talk?** > Feel free to [open an issue](https://github.com/hb-cam/Retail-Forecasting-Talk/issues) or reach out via LinkedIn. I'm especially happy to discuss the `v0 → v2` model progression or using `uv` for reproducible data science.
