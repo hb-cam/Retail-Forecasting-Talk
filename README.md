@@ -40,22 +40,24 @@ If you're attending the AMLC talk and have questions about the structural econom
 
 ## Talk Overview
 
-```mermaid
-graph LR
-    A[FRED API] --> B(Data Loader)
-    B --> C{Structural Model}
-    C --> D[Macro Layer]
-    C --> E[Industry Layer]
-    E --> F[Retail Forecast]
-    F --> G((Business Insight))
-```
-
 1. **The Problem** — sampling bias and simultaneity in operational data
 2. **The Structural Solution** — decomposing revenue through macro → industry → operational → financial layers
 3. **Building It Right** — functional form, indexation, and regression rigor
 4. **Modeling Dynamics** — stationarity, co-integration, and AR models
 5. **Using the Forecast** — uncertainty, scenarios, and stakeholder communication
 6. **Maintaining the Model** — tracking drift and maintaining accuracy
+
+### The structure solution
+
+```mermaid
+graph LR
+    A[FRED API] --> B(Data Loader)
+    B --> C{Structural Model}
+    C --> D[Macro Layer]
+    D --> E[Industry Layer]
+    E --> F[Retail Forecast]
+    F --> G((Business Insight))
+```
 
 ## What's Inside
 
