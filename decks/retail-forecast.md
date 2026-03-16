@@ -346,13 +346,13 @@ sankey-beta
 ---
 ## Regression Modeling — key concepts
 ### Identification — can feel like an art form, how to know it's right
-- **Specification** — functional form drives everything downstream
-- **Omitted Variable Bias** — dropping a variable biases what remains
-  (e.g., dropping a collinear predictor that carries unique signal)
-- **Collinearity (VIF)** — individual t-tests become unreliable;
-  doesn't mean the model is wrong — check joint significance
-- **Heteroscedasticity** — tells you about the DGP, not just the errors
-- **Autocorrelation** — often the first signal of a missing variable
+- **Specification** — Functional Form drives everything downstream
+  - **Omitted Variable Bias** — dropping a variable biases what remains
+    (e.g., dropping a collinear predictor that carries unique signal)
+  - **Collinearity (VIF)** — individual t-tests become unreliable;
+    doesn't mean the model is wrong — check joint significance
+  - **Heteroscedasticity** — tells you about the DGP, not just the errors
+  - **Autocorrelation** — often the first signal of a missing variable
 
 #### Go/No-Go
 - **F-Test** — joint significance holds even when individual t-tests fail
@@ -379,15 +379,15 @@ sankey-beta
   - Large shift → this observation is driving your estimates
 - **Action:** structural break → indicator (slide 10); data issue → investigate
 
-- $\hat{\beta}_{OLS} = \frac{\sum{(y_i - \bar{y})(x_i - \bar{x})}}{\sum{(x_i - \bar{x})^2}}$; both $y_i<<>>\bar{y}$ and $x_i<<>>\bar{x}$
+- $\hat{\beta}_{OLS} = \frac{\sum{(y_i - \bar{y})(x_i - \bar{x})}}{\sum{(x_i - \bar{x})^2}}$; leveraged outlier when both $y_i<<>>\bar{y}$ and $x_i<<>>\bar{x}$
 
 ---
 ## Regression Modeling — key concepts
 ### Other key concepts
 - Causal inference — identifying causal relationships
-- Instrumental variables — addressing endogeneity e.g., 2SLS
-- Difference-in-differences — comparing treatment and control groups
-- Regression discontinuity design — exploiting discontinuities in treatment assignment
+  - Instrumental variables — addressing endogeneity e.g., 2SLS
+  - Difference-in-differences — comparing treatment and control groups
+  - Regression discontinuity design — exploiting discontinuities in treatment assignment
 
 ---
 <!-- _class: divider -->
@@ -408,13 +408,11 @@ sankey-beta
 
 ---
 ## Advanced Time Series Modeling
-### AR(p) Models
+### ARIMA errors
 - **HAC standard errors** — corrects inference for heteroscedasticity and autocorrelation in one step; $\hat{\beta}$ doesn't change
 - **Autocorrelation in residuals is a symptom** — often signals a missing variable (OVB)
   - Fix the specification first; add AR terms only as a last resort
 - **Parsimony** — minimum lag order
-- **Holdout** — most recent full year; match the business question
-
 
 ---
 <!-- _class: divider -->
@@ -445,22 +443,22 @@ sankey-beta
 ---
 ## Monitoring and Evaluation
 ### Evaluation — What the framework enables
-- **Performance tracking** — within-year vs. full-year error; error correction; trending to plan                                                                              
+- **Performance tracking** — within-year vs. full-year error, error correction, trending to plan                                                                              
 - **Early warning** — residual structure and parameter stability signal problems before the forecast misses 
-- **Overlay adjustments** — model as the baseline; layer known impacts on top
-- **Model updating** — that drift has meaning, meaning has value, update when diagnostics dictate
+- **Overlay adjustments** — model is the baseline, layer business assumptions on top e.g., large deals, business shifts
+- **Model updating** — drift has meaning, meaning has value; update when diagnostics dictate
 
 ---
 ## Monitoring and Evaluation
 ### Monitoring
 What to version and track:
 Given a functional form: $y_t = \beta*X_t + \epsilon_t$
-Where $\beta = (X'X)^{-1}*X'y$
+Where $\hat{\beta} = (X'X)^{-1}*X'y$
 - $y_t$, $\hat{y_t}$, $\epsilon_t$, $X_t$, $MAE$, $MAPE$ — as a versioned table
-- $\matrix{\beta}$ coefficient vector 
+- $\hat{\beta}$ coefficient vector 
 - $\Delta X_t = X_t - X_{t-1}$ — generally correct, and any other transformations
-- $\beta *\Delta X_t$
- - Holdout $MAPE$ by estimation vintage — is the model improving or degrading over time?
+- $\hat{\beta} *\Delta X_t$
+ - Holdout $MAPE$ by estimation vintage
 
 ---
 ## Monitoring and Evaluation
