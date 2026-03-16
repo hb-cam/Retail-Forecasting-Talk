@@ -1,4 +1,3 @@
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb)
 # Payments Forecasting with Retail Data
 
 [View the Live Presentation](https://hb-cam.github.io/Retail-Forecasting-Talk/decks/build/retail-forecast.html)
@@ -6,10 +5,6 @@
 **AMLC Community Talk — March 2026**
 
 Scaling insights with an interpretable, drift-resistant solution of a dynamic system.
-
-**Run the notebooks in your browser:**
-[![Cyclicality Analysis](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Cyclicality.ipynb) Retail Cyclicality
-[![Forecasting Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb) Retail Forecast
 
 This repo contains the slide deck, Jupyter notebooks, and Python source code for a talk on structural econometric forecasting applied to retail and payments data.
 
@@ -68,6 +63,16 @@ npm run deck:serve
 ```
 
 ### Run the Notebooks
+
+Experience the analysis directly in your browser. These notebooks are configured to run in **Google Colab** with zero local setup.
+
+| Analysis Module | Focus | Link |
+| :--- | :--- | :--- |
+| **Retail Cyclicality** | STL decomposition, cross-correlation, and crisis comparison. | [![Cyclicality Analysis](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Cyclicality.ipynb) |
+| **Forecasting Model** | Structural regression modeling and macroeconomic indexing. | [![Forecasting Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb) |
+
+> [!TIP]
+> **Using FRED in Colab:** When the notebook opens, you will be prompted to enter your [FRED API Key](https://fred.stlouisfed.org/docs/api/api_key.html) to fetch live data. The notebooks include pre-computed outputs if you prefer to just browse.
 
 ```bash
 uv run jupyter lab
