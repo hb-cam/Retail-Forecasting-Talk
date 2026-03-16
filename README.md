@@ -64,7 +64,8 @@ npm run deck:serve
 
 ### Run the Notebooks
 
-Experience the analysis directly in your browser. These notebooks are configured to run in **Google Colab** with zero local setup.
+#### Run in Colab
+These notebooks are configured to run in **Google Colab** with zero local setup.
 
 | Analysis Module | Focus | Link |
 | :--- | :--- | :--- |
@@ -74,6 +75,7 @@ Experience the analysis directly in your browser. These notebooks are configured
 > [!TIP]
 > **Using FRED in Colab:** When the notebook opens, you will be prompted to enter your [FRED API Key](https://fred.stlouisfed.org/docs/api/api_key.html) to fetch live data. The notebooks include pre-computed outputs if you prefer to just browse.
 
+#### Run locally
 ```bash
 uv run jupyter lab
 ```
