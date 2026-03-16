@@ -38,6 +38,15 @@ uv run pytest -v -k "not Live"    # Unit tests only (no network)
 ## 💬 Q&A and Discussion
 If you're attending the AMLC talk and have questions about the structural econometric approach or the `statsmodels` implementation, please [open an issue](https://github.com/hb-cam/Retail-Forecasting-Talk/issues) or reach out during the networking session!
 
+## Talk Overview
+
+1. **The Problem** — sampling bias and simultaneity in operational data
+2. **The Structural Solution** — decomposing revenue through macro → industry → operational → financial layers
+3. **Building It Right** — functional form, indexation, and regression rigor
+4. **Modeling Dynamics** — stationarity, co-integration, and AR models
+5. **Using the Forecast** — uncertainty, scenarios, and stakeholder communication
+6. **Maintaining the Model** — tracking drift and maintaining accuracy
+
 ## What's Inside
 
 | Path | Description |
@@ -91,15 +100,6 @@ npm install
 npm run deck:serve
 # Opens at http://localhost:3000
 ```
-
-## Talk Overview
-
-1. **The Problem** — sampling bias and simultaneity in operational data
-2. **The Structural Solution** — decomposing revenue through macro → industry → operational → financial layers
-3. **Building It Right** — functional form, indexation, and regression rigor
-4. **Modeling Dynamics** — stationarity, co-integration, and AR models
-5. **Using the Forecast** — uncertainty, scenarios, and stakeholder communication
-6. **Maintaining the Model** — tracking drift and maintaining accuracy
 
 ## Tech Stack
 
