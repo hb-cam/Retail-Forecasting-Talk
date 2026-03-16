@@ -1,9 +1,15 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb)
 # Payments Forecasting with Retail Data
 
+[View the Live Presentation](https://hb-cam.github.io/Retail-Forecasting-Talk/decks/build/retail-forecast.html)
+
 **AMLC Community Talk — March 2026**
 
 Scaling insights with an interpretable, drift-resistant solution of a dynamic system.
+
+**Run the notebooks in your browser:**
+[![Cyclicality Analysis](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Cyclicality.ipynb) Retail Cyclicality
+[![Forecasting Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hb-cam/Retail-Forecasting-Talk/blob/main/notebooks/Retail_Forecast.ipynb) Retail Forecast
 
 This repo contains the slide deck, Jupyter notebooks, and Python source code for a talk on structural econometric forecasting applied to retail and payments data.
 

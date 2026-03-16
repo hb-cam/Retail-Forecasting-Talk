@@ -14,6 +14,7 @@ from __future__ import annotations
 import os
 from collections.abc import Iterable
 from dataclasses import dataclass, field
+from getpass import getpass
 
 import numpy as np
 import pandas as pd
@@ -148,6 +149,9 @@ class FredMacroRetailLoader:
     def __post_init__(self) -> None:
         if self.api_key is None:
             self.api_key = os.environ.get("FRED_API_KEY", "")
+        if not self.api_key:
+            self.api_key = getpass("FRED API key not found. Please enter your FRED API key: ")
+            os.environ["FRED_API_KEY"] = self.api_key
         if not self.api_key:
             raise ValueError("FRED API key required. Set FRED_API_KEY env var or pass api_key=.")
 
