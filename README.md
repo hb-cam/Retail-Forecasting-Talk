@@ -168,7 +168,7 @@ If you're interested in structural econometrics, property technology, or modern 
 
 * **LinkedIn:** [hicksbruce](https://www.linkedin.com/in/hicksbruce)
 * **GitHub:** [@hb-cam](https://github.com/hb-cam)
-* **Event:** [Applied Machine Learning Collective (AMLC) Denver](https://www.meetup.com/applied-machine-learning-collective/)
+* **Event:** [Applied Machine Learning Collective (AMLC) Denver](https://www.meetup.com/the-applied-machine-learning-collective-of-the-rockies/)
 
 ---
 
