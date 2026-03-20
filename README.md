@@ -1,4 +1,4 @@
-# Payments Forecasting with Retail Data
+# Retail Trade Forecasting
 
 [View the Live Presentation](https://hb-cam.github.io/Retail-Forecasting-Talk/decks/build/retail-forecast.html)
 
